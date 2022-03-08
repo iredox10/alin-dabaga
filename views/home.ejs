@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %> 
+<body class="body">
+    <%- include('./partials/nav.ejs') %> 
+
+    <div class="container">
+        <div class="flex justify-end mb-10">
+            <form>
+                <input type="text" name="search">
+                <button>search</button>
+            </form>
+        </div>
+        <div class="flex item-center justify-between">
+            <h1 class="uppercase font-bold underline">customers</h1>
+            <button class="btn addCustomer">add customer</button>
+        </div>
+                <div class="md:grid grid-cols-3 gap-4 my-3">
+                    <% customers.forEach(customer => { %>
+                     <div class="shadow-lg bg-[#555555] p-3 mb-3">
+                        <div class="mb-1 capitalize">
+                            <h1><span class="font-bold">suna: </span> <%=customer.fullName%> </h1>
+                            <p> <span class="font-bold">adireshi: </span> <%=customer.address %></p>
+                            <p><span class="font-bold">lambar waya: </span> <%= customer.phoneNumber %></p>
+                            <p><span class="font-bold">whatsapp Number: </span><%= customer.whatsappNumber %></p>
+                        </div>
+                        <div class="mt-2 flex items-center">    
+                            <a href="/<%=customer.id%>" class="btn  bg-black block  hover:bg-white hover:text-black my-2">view full detail</a>
+                            <form action="/delete-customer/<%=customer.id  %>?_method=DELETE" method="post">
+                                <button class="bg-red-500 text-white ">delete</button>
+                            </form>
+                        </div>
+                    </div>   
+                                   <% });  %>
+                </div>
+        </div>
+
+        <div class="model mx-3 p-2  w-[80%] h-[70vh] md:mx-auto bg-[#4d4c4c] absolute top-[20%] left-[10%] hidden">
+        <button class="close p-2 bg-red-500 text-white capitalize font-bold flex justify-end">close</button>
+        <form action="/add-customer" method="POST">
+            <div class="mb-3">
+                <label for="fullName">suna</label>
+                <input type="text" name="fullName" id="fullName">
+            </div>
+            <div class="mb-3">
+                <label for="address">adireshi</label>
+                <input type="text" name="address" id="address">
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumber">lambar waya</label>
+                <input type="number" name="phoneNumber" id="phoneNumber">
+            </div>
+            <div class="mb-3">
+                <label for="whatsappNumber">whatsapp Number</label>
+                <input type="number" name="whatsappNumber" id="whatsappNumber">
+            </div>
+            <button class="btn">add customer</button>
+        </form>
+    </div>
+    <script>
+        const model = document.querySelector('.model')
+        const close = document.querySelector('.close')
+        const addCustomer = document.querySelector('.addCustomer')
+            addCustomer.addEventListener('click', () => {
+                model.classList.remove('hidden')
+            })
+
+       close.addEventListener('click', ()=>{
+           model.classList.add('hidden')
+       })     
+    </script>
+</body>
+</html>

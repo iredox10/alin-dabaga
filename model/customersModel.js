@@ -5,9 +5,8 @@ const customersSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        required: true
+    whatsappNumber: {
+        type: Number
     },
     phoneNumber: {
         type: String,
@@ -17,7 +16,12 @@ const customersSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    
+    products: [
+        {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product'
+    }
+    ]
 })
 
-module.exports = mongoose.model('customer', customersSchema)
+module.exports = mongoose.model('Customer', customersSchema)

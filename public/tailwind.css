@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container{
+    @apply p-5 md:w-[80%] mx-auto
+}
+
+.body{
+    @apply text-white bg-[#141414]
+}
+
+.btn{
+    @apply capitalize bg-[#555555] p-2 hover:text-[#555555] hover:bg-white
+}
+
+input{
+    @apply text-black capitalize w-full p-2
+}
+
+label{
+    @apply capitalize font-medium pb-1
+}

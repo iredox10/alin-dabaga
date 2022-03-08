@@ -1,0 +1,21 @@
+{
+  "name": "hassan-shop",
+  "version": "1.0.0",
+  "description": "record book app",
+  "main": "server.js",
+  "author": "idris adam",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon server",
+    "script": "node server"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.1.6",
+    "nodemon": "^2.0.15",
+    "postcss": "^8.4.7",
+    "tailwindcss": "^3.0.13"
+  }
+}
