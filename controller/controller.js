@@ -67,3 +67,16 @@ exports.delete_product = async (req, res) => {
     let product = await Product.findByIdAndDelete(req.params.id)
     res.redirect('/')
 }
+
+exports.logIn = (req, res) => {
+    res.render('logIn',{ title:'login'})
+}
+
+exports.post_log_in = (req, res,next) => {
+    // if (req.body.admin == 'ali' && req.body.password== 123456) {
+    //     res.redirect('/home')
+    // }else{
+    //     res.send('admin name or password is incorrect')
+    // }
+    res.send('hello')
+}

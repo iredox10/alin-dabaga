@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%# include('./partials/head.ejs') %> 
+<body class="body">
+    <%- include('./partials/nav.ejs') %>
+
+    <div class="container">
+        <h1 class="text-center uppercase font-bold" >log in</h1>
+        <form action="/login">
+            <div class="mb-3">
+                <label for="admin">admin name</label>
+                <input type="text" name="admin" id="admin">
+            </div>
+            <div class="mb-3">
+                <label for="admin">password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <button class="btn">log in</button>
+        </form>
+    </div>
+</body>
+</html>
