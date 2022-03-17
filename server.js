@@ -29,4 +29,4 @@ app.get('/cookie', (req, res) => {
     res.cookie('newCookie', true)
     res.send('cookie sended')
 })
-app.listen(3000 || process.env.PORT);
+app.listen(process.env.PORT || 3000);
