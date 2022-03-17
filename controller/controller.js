@@ -40,8 +40,8 @@ exports.customerDetail = async (req, res) => {
             searchOption.productName = new RegExp(query,'i')
         }
         let customer = await Customer.findById(req.params.id)
-        let products = await Customer.findById(req.params.id,searchOption).populate('products');
-        res.render('customer-detail', { title: customer.fullName, customer, products: products.products, searchOption: req.query })     
+        let products = await Customer.findById(req.params.id, searchOption).populate('products')
+        res.render('customer-detail', { title: customer.fullName, customer, products: products.products, searchOption: req.query })
     }
     catch (err) {
         console.log(err)

@@ -7,12 +7,14 @@ const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
-mongoose.connect(process.env.MONGODB || 'mongodb://localhost/hassan-shop')
-.then((res) => {
-    console.log('connected to mongodb ')
-}).catch((err) => {
-    console.log(err)
-});
+mongoose
+	.connect( 'mongodb://localhost/hassan-shop' || process.env.MONGODB)
+	.then((res) => {
+		console.log('connected to mongodb ');
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 
 
 app.use(express.urlencoded({extended:false}))
@@ -27,4 +29,4 @@ app.get('/cookie', (req, res) => {
     res.cookie('newCookie', true)
     res.send('cookie sended')
 })
-app.listen(process.env.PORT || 300)
+app.listen(process.env.PORT || 3000)

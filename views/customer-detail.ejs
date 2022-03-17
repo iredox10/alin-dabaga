@@ -11,18 +11,12 @@
     </head>
 <body class="body">
     <%- include('./partials/nav.ejs')  %> 
-    <h1 class="capitalize p-3 md:text-2xl bg-[#555555]">paging: <span class="font-bold"><%= customer.fullName  %> </span></h1>
-    <div class="container">
-        <form action="/<%=customer.id%>">
-            <input type="text" name="search">
-            <button>search</button>
-        </form>
-    </div>
+    <h1 class="capitalize p-3 md:text-4xl bg-[#555555] text-center font-bold ">lissafin: <span class="font-bold"><%= customer.fullName  %> </span></h1>
     <div class="container md:grid grid-cols-4">
     
         
         <div class="flex flex-wrap gap-7 col-span-3">
-            <%products.forEach(product=>{ %>
+            <%products.forEach(product =>{ %>
                 <div class="bg-[#bbb9b9] p-2 text-black capitalize">
                     <h1 class="text-xl">product name: <%= product.productName %>
                     </h1>
@@ -32,13 +26,10 @@
                     </p>
                     <p><span class="font-bold">ranar: </span> <%=product.createAt.toLocaleDateString()  %> </p>   
                     <p><span class="font-bold">lokaci: </span> <%=product.createAt.toLocaleTimeString()  %> </p>  
-
-                    
                 </div>
                 <% }) %>
-
             </div>
-        
+            
         <form action="/add-product/<%=customer.id  %> " method="post" class="">
             <h1 class="capitalize text-center underline text-2xl mb-2">add product</h1>
             <div class="mb-3">
@@ -53,6 +44,7 @@
             <label for="amount">amount</label>
             <input type="number" name="amount" id="amount">
         </div>
+
         <!-- <div class="mb-3">
             <label for="paid">paid</label>
             <input type="number" name="paid" id="paid">

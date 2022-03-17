@@ -7,12 +7,14 @@
     <div class="container">
         <div class="flex justify-end mb-10">
             <form>
-                <input type="text" name="search">
-                <button>search</button>
+                <input type="text" name="search" placeholder="search...">
+                <button class="btn mt-2">search</button>
+
+
             </form>
         </div>
         <div class="flex item-center justify-between">
-            <h1 class="uppercase font-bold underline">customers</h1>
+            <h1 class="uppercase font-bold underline  text-2xl  ">customers</h1>
             <button class="btn addCustomer">add customer</button>
         </div>
                 <div class="md:grid grid-cols-3 gap-4 my-3">
@@ -24,11 +26,20 @@
                             <p><span class="font-bold">lambar waya: </span> <%= customer.phoneNumber %></p>
                             <p><span class="font-bold">whatsapp Number: </span><%= customer.whatsappNumber %></p>
                         </div>
-                        <div class="mt-2 flex items-center">    
-                            <a href="/<%=customer.id%>" class="btn  bg-black block  hover:bg-white hover:text-black my-2">view full detail</a>
-                            <form action="/delete-customer/<%=customer.id  %>?_method=DELETE" method="post">
-                                <button class="bg-red-500 text-white ">delete</button>
-                            </form>
+                        <div class="mt-2 flex items-center justify-between">    
+                            <a href="/<%=customer.id%>" class="bg-white text-black hover:bg-black hover:text-white  p-2 block  my-2 capitalize ">duba bayanai</a>
+                            <button class="bg-red-500 hover:bg-red-700 text-white p-2 capitalize deleteBtn ">goge customer</button>
+                            
+                            <div class="deleteModel bg-red-300  w-[20%] absolute top-[30%] left-[40%] shadow-lg p-5 rounded hidden">
+                                <h1 class="text-2xl font-bold capitalize text-center mb-5">kana so ka goge: <%=customer.fullName  %> </h1>
+                                <div class="flex justify-between item-center ">
+                                    <form action="/delete-customer/<%=customer.id  %>?_method=DELETE" method="post">
+                                        <button class="bg-red-500 hover:bg-red-700 px-4 py-2">eh</button>
+                                    </form>
+                                    <button class="btn noBtn"> a'a</button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>   
                                    <% });  %>
@@ -61,13 +72,27 @@
         const model = document.querySelector('.model')
         const close = document.querySelector('.close')
         const addCustomer = document.querySelector('.addCustomer')
-            addCustomer.addEventListener('click', () => {
+        const deleteBtn = document.querySelector('.deleteBtn')
+        const deleteModel = document.querySelector('.deleteModel')
+        const noBtn = document.querySelector('.noBtn')
+
+        
+        
+        addCustomer.addEventListener('click', () => {
                 model.classList.remove('hidden')
             })
-
-       close.addEventListener('click', ()=>{
-           model.classList.add('hidden')
+            
+            close.addEventListener('click', ()=>{
+                model.classList.add('hidden')
        })     
+
+                deleteBtn.addEventListener('click', ()=>{
+                    deleteModel.classList.remove('hidden')
+                })
+        
+                noBtn.addEventListener('click', ()=>{
+                    deleteModel.classList.add('hidden')
+                })
     </script>
 </body>
 </html>
