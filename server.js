@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
 mongoose
-	.connect( 'mongodb://localhost/hassan-shop' || process.env.MONGODB)
+	.connect(process.env.MONGODB || 'mongodb://localhost/hassan-shop')
 	.then((res) => {
 		console.log('connected to mongodb ');
 	})
@@ -29,4 +29,4 @@ app.get('/cookie', (req, res) => {
     res.cookie('newCookie', true)
     res.send('cookie sended')
 })
-app.listen(process.env.PORT || 3000)
+app.listen(3000 || process.env.PORT);
