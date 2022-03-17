@@ -5,8 +5,9 @@ const ejs = require('ejs')
 const routes = require('./routes/routes')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
+require('dotenv').config()
 
-mongoose.connect('mongodb://localhost/hassan-shop')
+mongoose.connect(process.env.MONGODB || 'mongodb://localhost/hassan-shop')
 .then((res) => {
     console.log('connected to mongodb ')
 }).catch((err) => {
@@ -21,8 +22,9 @@ app.use(methodOverride('_method'))
 app.use(cookieParser())
 app.use(routes)
 
+
 app.get('/cookie', (req, res) => {
     res.cookie('newCookie', true)
     res.send('cookie sended')
 })
-app.listen(3000)
+app.listen(process.env.PORT || 300)
