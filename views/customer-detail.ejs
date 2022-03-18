@@ -30,12 +30,8 @@
                     </p>
                     <p><span class="font-bold">amount: </span> N <%= product.amount %>
                     </p>
-                    <p><span class="font-bold">paid: </span><%= product.paid %>
-                    </p>
-                    <p><span class="font-bold">balance: </span> N <%= product.balance %>
-                    </p>
-                    <p><span class="font-bold">ranar: </span> <%=product.createAt.toLocaleDateString()  %> </p>
-                    <p><span class="font-bold">lokaci: </span> <%=product.createAt.toLocaleTimeString()  %> </p>
+                    <p><span class="font-bold">ranar: </span> <%=product.createAt.toLocaleDateString()  %> </p>   
+                    <p><span class="font-bold">lokaci: </span> <%=product.createAt.toLocaleTimeString()  %> </p>  
 
                     
                 </div>
@@ -57,14 +53,14 @@
             <label for="amount">amount</label>
             <input type="number" name="amount" id="amount">
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="paid">paid</label>
             <input type="number" name="paid" id="paid">
         </div>
         <div class="mb-3">
             <label for="balance">balance</label>
             <input type="number" name="balance" id="balance">
-        </div>
+        </div> -->
         <button class="btn">add product</button>
     </form>
 </div>

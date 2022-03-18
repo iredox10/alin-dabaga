@@ -1,14 +1,24 @@
 const Customer = require('../model/customersModel')
 const Product = require('../model/productModel')
+const jwt = require('jsonwebtoken')
+
+const sign = (id) => {
+    jwt.sign({id:id},'secret-key', {expiresIn:'1d'})
+}
 
 exports.home = async (req, res) => {
-    let searchOption = {}
-    const query = req.query.search
-    if (query !== null  && query !== '') {
-        searchOption.fullName = new RegExp(query,'i')
+    try {        
+        let searchOption = {}
+        const query = req.query.search
+        if (query !== null && query !== '') {
+            searchOption.fullName = new RegExp(query, 'i')
+        }
+        const customers = await Customer.find(searchOption)
+        res.render('home', { title: 'home', customers, searchOption: req.query })
     }
-    const customers = await Customer.find(searchOption)
-    res.render('home', { title: 'home', customers, searchOption: req.query })
+    catch(err){
+        console.log(err)
+    }
 }
 
 exports.addCustomer = async(req,res) =>{
@@ -23,14 +33,14 @@ exports.addCustomer = async(req,res) =>{
 }
 
 exports.customerDetail = async (req, res) => {
-    const query = req.query.search
-    let searchOption = {}
-    if (query !== null && query !== '') {
-        searchOption.productName = new RegExp(query,'i')
-    }
     try {
+        const query = req.query.search
+        let searchOption = {}
+        if (query !== null && query !== '') {
+            searchOption.productName = new RegExp(query,'i')
+        }
         let customer = await Customer.findById(req.params.id)
-        let products = await Customer.findById(req.params.id,searchOption).populate('products').sort({ asc: '1' });
+        let products = await Customer.findById(req.params.id,searchOption).populate('products');
         res.render('customer-detail', { title: customer.fullName, customer, products: products.products, searchOption: req.query })     
     }
     catch (err) {
@@ -73,10 +83,10 @@ exports.logIn = (req, res) => {
 }
 
 exports.post_log_in = (req, res,next) => {
-    // if (req.body.admin == 'ali' && req.body.password== 123456) {
-    //     res.redirect('/home')
-    // }else{
-    //     res.send('admin name or password is incorrect')
-    // }
-    res.send('hello')
+    if (req.body.admin == 'ali' && req.body.password== 123456) {
+        next()
+    }else{
+        res.send('admin name or password is incorrect')
+    }
+    // res.send('hello')
 }

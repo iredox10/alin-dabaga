@@ -13,14 +13,6 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    balance:{
-        type: Number,
-        required: true
-    },
-    paid:{
-        type: Number,
-        required: true
-    },
     customer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Customer'
